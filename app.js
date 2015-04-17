@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var credentials = require('./credentials.js');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -22,6 +23,17 @@ app.use(logger('dev'));
 app.use(bodyParser.text());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+switch(app.get('env')){
+  case 'development':
+    mongoose.connect(credentials.mongo.development.connectionString, credentials.opts);
+    break;
+  case 'production':
+    mongoose.connect(credentials.mongo.production.connectionString, credentials.opts);
+    break;
+  default:
+    throw new Error('Unknown execution environment: ' + app.get('env'));
+}
 
 app.use('/', routes);
 app.use('/users', users);
