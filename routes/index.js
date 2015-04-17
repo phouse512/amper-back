@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var index_handlers = require('../handlers/index.js');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// GET home page.
+router.get('/', index_handlers.index);
+
+// POST update
+router.post('/amper', index_handlers.update);
 
 module.exports = router;
