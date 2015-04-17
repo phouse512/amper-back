@@ -22,7 +22,7 @@ exports.update = function(req, res, next){
         	// var candy = arguments[i];
     	}
 
-    	res.send(arguments.length + " documents successfully stored.");
+    	res.send((arguments.length+1) + " documents successfully stored.");
 	});
 }
 
