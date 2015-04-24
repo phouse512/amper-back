@@ -9,6 +9,7 @@ var credentials = require('./credentials.js');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var data_routes = require('./routes/datapoints');
 
 var app = express();
 
@@ -37,6 +38,7 @@ switch(app.get('env')){
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/data', data_routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

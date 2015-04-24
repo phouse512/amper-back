@@ -1,0 +1,30 @@
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2">
+		<table class="table">
+			<tr>
+				<th>
+					timestamp
+				</th>
+				<th>
+					current
+				</th>
+				<th>
+					device
+				</th>
+			</tr>
+			{{#each points }}
+			<tr>
+				<td>
+					{{ this.timestamp }}
+				</td>
+				<td>
+					{{ this.current }}
+				</td>
+				<td>
+					{{ this.device }}
+				</td>
+			</tr>
+			{{/each}}
+		</table>
+	</div>
+</div>
