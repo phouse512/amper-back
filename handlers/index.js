@@ -4,10 +4,12 @@ var parser = require('../util/parser.js'),
 
 exports.update = function(req, res, next){
 	console.log(req.body);
-	datapoints = req.body.split(";");
+	parsedResult = req.body.split(".");
+	baseTime = parsedResult[0];
 	temp = [];
+	datapoints = parsedResult[1].split(':');
 	for(var i=0; i < datapoints.length; i++){
-		temp.push(parser.parseData(datapoints[i]));
+		temp.push(parser.parseData(datapoints[i], baseTime));
 	}
 
 	console.log(temp);

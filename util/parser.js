@@ -1,9 +1,9 @@
 moment = require('moment');
 
-exports.parseData = function(datapoint) {
+exports.parseData = function(datapoint, baseTime) {
 	try {
 		result = datapoint.split(":");
-		timestamp = moment.unix(parseInt(result[0]));
+		timestamp = moment.unix(parseInt(result[0])+parseInt(baseTime));
 		current = result[1];
 		return {
 			timestamp: timestamp.toDate(),
