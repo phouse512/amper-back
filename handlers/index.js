@@ -7,7 +7,7 @@ exports.update = function(req, res, next){
 	parsedResult = req.body.split(".");
 	baseTime = parsedResult[0];
 	temp = [];
-	datapoints = parsedResult[1].split(':');
+	datapoints = parsedResult[1].split(';');
 	for(var i=0; i < datapoints.length; i++){
 		temp.push(parser.parseData(datapoints[i], baseTime));
 	}
