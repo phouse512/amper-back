@@ -5,11 +5,18 @@ var parser = require('../util/parser.js'),
 exports.update = function(req, res, next){
 	console.log(req.body);
 	parsedResult = req.body.split(".");
-	baseTime = parsedResult[0];
+	parsedTime = parsedResult[0].split(":");
+	if(parsedTime.length == 1){
+		baseTime = parsedResult[0];
+		device = "default";
+	} else {
+		baseTime = parsedResult[0];
+		device = parsedResult[1];
+	}
 	temp = [];
 	datapoints = parsedResult[1].split(';');
 	for(var i=0; i < datapoints.length; i++){
-		temp.push(parser.parseData(datapoints[i], baseTime));
+		temp.push(parser.parseData(datapoints[i], baseTime, device));
 	}
 
 	console.log(temp);

@@ -1,6 +1,6 @@
 moment = require('moment');
 
-exports.parseData = function(datapoint, baseTime) {
+exports.parseData = function(datapoint, baseTime, device) {
 	try {
 		result = datapoint.split(":");
 		timestamp = moment.unix(parseInt(result[0])+parseInt(baseTime));
@@ -8,7 +8,7 @@ exports.parseData = function(datapoint, baseTime) {
 		return {
 			timestamp: timestamp.toDate(),
 			current: current,
-			device: 'default'
+			device: device,
 		};
 	} catch(err){
 		console.log(err);
