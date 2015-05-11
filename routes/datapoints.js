@@ -3,6 +3,7 @@ var router = express.Router();
 var data_handlers = require('../handlers/data.js');
 
 /* GET users listing. */
+router.get('/:amount', data_handlers.list);
 router.get('/', data_handlers.list);
 
 // csv endpoint
