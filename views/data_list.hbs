@@ -1,3 +1,7 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+
+
 <div class="row">
 	<div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2">
 		<h3>Data:</h3>
@@ -39,12 +43,14 @@
 </div>
 
 <script type="text/javascript">
+	moment().format();
 	points = "{{pointsString}}";
 	points = points.replace(/&quot;/g, '"');
 	points = $.parseJSON(points);
 
 	for(var i=0;i<points.length; i++){
-		temp_array = [points[i].timestamp, points[i].current, points[i].device];
+		new_time = moment(points[i].timestamp);
+		temp_array = [new_time.format('X'), points[i].current, points[i].device];
 		points[i] = temp_array;
 	}
 
