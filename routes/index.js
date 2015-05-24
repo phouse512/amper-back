@@ -8,4 +8,6 @@ router.get('/', index_handlers.index);
 // POST update
 router.post('/amper', index_handlers.update);
 
+router.get('/graph', index_handlers.graph);
+
 module.exports = router;

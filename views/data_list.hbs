@@ -64,6 +64,8 @@
 		csvContent += index < points.length ? dataString+ "\n" : dataString;
 	}); 
 
+	console.log(csvContent);
+
 	$(document).ready(function(){
 		$("#download").on('click', function(e){
 			e.preventDefault();
