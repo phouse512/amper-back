@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('amper-back:server');
 var http = require('http');
+var global = require('../global');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +21,11 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+// set up socket io 
+
+var io = require('socket.io').listen(server);
+global.io = io;
 
 /**
  * Listen on provided port, on all network interfaces.

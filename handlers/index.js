@@ -1,5 +1,6 @@
 var parser = require('../util/parser.js'),
-	DataPoint = require('../models/dataPoint.js');
+	DataPoint = require('../models/dataPoint.js'),
+	global = require('../global.js');
 
 
 exports.update = function(req, res, next){
@@ -32,14 +33,20 @@ exports.update = function(req, res, next){
         	// var candy = arguments[i];
     	}
 
+    	global.io.emit('data', temp)
+
     	res.send((arguments.length+1) + " documents successfully stored.");
 	});
 }
 
 exports.index = function(req, res, next) {
 	res.render('index', { title: 'Amper' });
+	global.io.emit('hello', 'world');
 }
 
 exports.graph = function(req, res, next){
-	res.render("graph");
+	datapoints = DataPoint.find().sort({'timestamp': 'desc'}).limit(200).exec(function(err, points){
+		console.log(points);
+		res.render("graph", { pointsString: JSON.stringify(points) });
+	});
 }
