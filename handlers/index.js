@@ -45,7 +45,7 @@ exports.index = function(req, res, next) {
 }
 
 exports.graph = function(req, res, next){
-	datapoints = DataPoint.find().sort({'timestamp': 'desc'}).limit(200).exec(function(err, points){
+	datapoints = DataPoint.find().sort({'timestamp': 'desc'}).limit(30).exec(function(err, points){
 		console.log(points);
 		res.render("graph", { pointsString: JSON.stringify(points) });
 	});
