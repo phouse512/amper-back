@@ -33,7 +33,7 @@ exports.update = function(req, res, next){
         	// var candy = arguments[i];
     	}
 
-    	global.io.emit('data', temp)
+    	global.io.emit('data', arguments);
 
     	res.send((arguments.length+1) + " documents successfully stored.");
 	});

@@ -85,7 +85,8 @@ $(function () {
                 }())
             }]
         });
-
+		var intervalArray = [];
+		var intervalCount = 0;
 		var socket = io.connect('http://104.236.24.179:3000');
 		socket.on('data', function(data) {
 			//console.log(data);
@@ -99,14 +100,17 @@ $(function () {
 			// }
 			
 			count = 0;
-			interval = setInterval(function() {
+			intervalArray[intervalCount] = setInterval(function() {
 				if(count >= data.length){
-					clearInterval(interval);
+					window.clearInterval(intervalArray[intervalCount]);
 				} else {
 					newChart.highcharts().series[0].addPoint([parseInt(moment(data[count].timestamp).format('x')), parseInt(data[count].current)], true, true);
+					console.log(count);
 					count += 1;
 				}
 			}, 1000);
+
+			intervalCount += 1;
 
 			// for(i=0; i<data.length; i++){
 			// 	series.addPoint([moment(data[i].timestamp), parseInt(data[i].current)], true, true);
