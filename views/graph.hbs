@@ -93,6 +93,9 @@ $(function () {
 			//series.addPoint([(new Date()).getTime(), 2], true, true);
 			console.log(data);
 
+			data = data.1;
+			data = data.splice(0,15);
+
 			// for(i=0; i < data.length; i++){
 			// 	console.log(i);
 			// 	console.log($("#container").highcharts());
