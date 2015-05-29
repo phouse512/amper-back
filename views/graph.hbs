@@ -67,7 +67,7 @@ $(function () {
                     for(i = 0; i < points.length; i++){
                     	//console.log(points[i].timestamp);
                     	data.push({
-                    		x: moment(points[i].timestamp),
+                    		x: parseInt(moment(points[i].timestamp).format('x')),
                     		y: parseInt(points[i].current),
                     	});
                     }
