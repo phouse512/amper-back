@@ -27,7 +27,7 @@ $(function () {
                 marginRight: 10,
             },
             title: {
-                text: 'Live random data'
+                text: 'Live current data'
             },
             xAxis: {
                 type: 'datetime',
@@ -35,7 +35,7 @@ $(function () {
             },
             yAxis: {
                 title: {
-                    text: 'Value'
+                    text: 'Current'
                 },
                 plotLines: [{
                     value: 0,
@@ -93,7 +93,7 @@ $(function () {
 			//series.addPoint([(new Date()).getTime(), 2], true, true);
 			console.log(data);
 
-			data = data.1;
+			data = data['1'];
 			data = data.splice(0,15);
 
 			// for(i=0; i < data.length; i++){
@@ -103,9 +103,9 @@ $(function () {
 			// }
 			
 			count = 0;
-			intervalArray[intervalCount] = setInterval(function() {
+			interval = setInterval(function() {
 				if(count >= data.length){
-					window.clearInterval(intervalArray[intervalCount]);
+					window.clearInterval(interval);
 				} else {
 					newChart.highcharts().series[0].addPoint([parseInt(moment(data[count].timestamp).format('x')), parseInt(data[count].current)], true, true);
 					console.log(count);
@@ -113,7 +113,7 @@ $(function () {
 				}
 			}, 1000);
 
-			intervalCount += 1;
+			//intervalCount += 1;
 
 			// for(i=0; i<data.length; i++){
 			// 	series.addPoint([moment(data[i].timestamp), parseInt(data[i].current)], true, true);
