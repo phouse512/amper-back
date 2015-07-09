@@ -11,8 +11,8 @@ exports.update = function(req, res, next){
 		baseTime = parsedResult[0];
 		device = "default";
 	} else {
-		baseTime = parsedResult[0];
-		device = parsedResult[1];
+		baseTime = parsedTime[0];
+		device = parsedTime[1];
 	}
 	temp = [];
 	datapoints = parsedResult[1].split(';');
