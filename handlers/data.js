@@ -18,3 +18,9 @@ exports.allCsv = function(req, res, next){
 		res.csv(points);
 	});
 }
+
+exports.deleteAll = function(req, res, next){
+	DataPoint.find().remove().exec(function(err){
+		res.redirect('all');
+	});
+}
