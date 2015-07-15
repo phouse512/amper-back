@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var credentials = require('./credentials.js');
+var csv = require('express-csv');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -25,8 +26,9 @@ app.set('view engine', 'hbs');
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 //app.use(bodyParser.json());
-app.use(bodyParser.text());
 app.use(cookieParser());
+app.use(bodyParser.text());
+app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 switch(app.get('env')){
