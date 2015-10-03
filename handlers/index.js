@@ -3,6 +3,14 @@ var parser = require('../util/parser.js'),
 	global = require('../global.js');
 
 
+// example:
+// 1432863000:word:fun-tie-ah.0:1000:2-1000-9;3:31:1-900-9;14:500:20-300-70
+// databag:
+//     fun: 2,
+//	   tie: 1000,
+//	   ah: 9,
+//	   value: 1000, second 0
+
 exports.update = function(req, res, next){
 	console.log(req.body);
 	parsedResult = req.body.split(".");
