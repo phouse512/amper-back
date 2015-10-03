@@ -6,6 +6,13 @@ var parser = require('../util/parser.js'),
 exports.update = function(req, res, next){
 	console.log(req.body);
 	parsedResult = req.body.split(".");
+
+	configuration = parsedResult[0];
+	configArray = configuration.split(":");
+
+	baseTime = configArray[0];
+	
+
 	parsedTime = parsedResult[0].split(":");
 	if(parsedTime.length == 1){
 		baseTime = parsedResult[0];
