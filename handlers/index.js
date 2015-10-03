@@ -9,7 +9,8 @@ var parser = require('../util/parser.js'),
 //     fun: 2,
 //	   tie: 1000,
 //	   ah: 9,
-//	   value: 1000, second 0
+// value: 1000
+// second: 0
 
 exports.update = function(req, res, next){
 	console.log(req.body);
