@@ -11,20 +11,26 @@ exports.update = function(req, res, next){
 	configArray = configuration.split(":");
 
 	baseTime = configArray[0];
-	
+	device = configArray[1];
+	paramTypes = configArray[2].split("-");
 
-	parsedTime = parsedResult[0].split(":");
-	if(parsedTime.length == 1){
-		baseTime = parsedResult[0];
-		device = "default";
-	} else {
-		baseTime = parsedTime[0];
-		device = parsedTime[1];
-	}
+	console.log(paramTypes);
+
+
+
+	// parsedTime = parsedResult[0].split(":");
+	// if(parsedTime.length == 1){
+	// 	baseTime = parsedResult[0];
+	// 	device = "default";
+	// } else {
+	// 	baseTime = parsedTime[0];
+	// 	device = parsedTime[1];
+	// }
 	temp = [];
 	datapoints = parsedResult[1].split(';');
 	for(var i=0; i < datapoints.length; i++){
-		temp.push(parser.parseData(datapoints[i], baseTime, device));
+		console.log('pre params state: ' + paramTypes);
+		temp.push(parser.parseData(datapoints[i], baseTime, device, paramTypes));
 	}
 
 	console.log(temp);
