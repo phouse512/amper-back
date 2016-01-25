@@ -20,7 +20,9 @@ exports.update = function(req, res, next){
 	temp = [];
 	datapoints = parsedResult[1].split(';');
 	for(var i=0; i < datapoints.length; i++){
-		temp.push(parser.parseData(datapoints[i], baseTime, device));
+		if (datapoints[i] != "") {
+			temp.push(parser.parseData(datapoints[i], baseTime, device));
+		}
 	}
 
 	console.log(temp);
@@ -42,11 +44,8 @@ exports.update = function(req, res, next){
 				return console.error('error', err);
 			}
 
-			console.log(result.rows[0]);
-
 			client.end();
-
-			res.send(result);
+			res.send(result.rowCount + " records successfully added!");
 		});
 	});
 
