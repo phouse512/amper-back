@@ -6,7 +6,7 @@ exports.parseData = function(datapoint, baseTime, device) {
 		timestamp = moment.unix(parseInt(result[0])+parseInt(baseTime));
 		current = result[1];
 		return {
-			timestamp: timestamp.toDate(),
+			timestamp: timestamp.unix(),
 			current: current,
 			device: device,
 		};
